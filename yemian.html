@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urban Neon | 都市霓虹</title>
+  <!-- 引入图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 自定义配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: {
+              blue: '#00f0ff',
+              purple: '#9d00ff',
+              pink: '#ff00a0',
+              green: '#00ff9d'
+            },
+            dark: '#0a0a1a',
+            darkBlue: '#12123a'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-gradient {
+        background: linear-gradient(90deg, #00f0ff, #9d00ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .neon-shadow {
+        box-shadow: 0 0 15px rgba(0,240,255,0.5), 0 0 30px rgba(157,0,255,0.3);
+      }
+      .bg-gradient-urban {
+        background: linear-gradient(135deg, #0a0a1a 0%, #12123a 50%, #1a1a4a 100%);
+      }
+      .parallax {
+        transform: translateY(var(--scroll-y));
+      }
+      /* 鼠标光效 */
+      .mouse-light {
+        background: radial-gradient(circle 400px at var(--x) var(--y), rgba(0,240,255,0.15), transparent 80%);
+      }
+    }
+  </style>
+</head>
+<body class="font-inter bg-dark text-white overflow-x-hidden">
+  <!-- 全局鼠标光效层 -->
+  <div id="mouseLight" class="mouse-light fixed inset-0 z-0 pointer-events-none transition-all duration-300"></div>
+
+  <!-- 导航栏 -->
+  <nav class="fixed w-full top-0 z-50 px-6 md:px-12 py-4 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-gradient">URBAN<span class="text-neon-blue">NEON</span></a>
+      <div class="hidden md:flex gap-8">
+        <a href="#home" class="hover:text-neon-blue transition-colors">首页</a>
+        <a href="#features" class="hover:text-neon-blue transition-colors">特色</a>
+        <a href="#projects" class="hover:text-neon-blue transition-colors">项目</a>
+        <a href="#contact" class="hover:text-neon-blue transition-colors">联系</a>
+      </div>
+      <button class="px-5 py-2 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple neon-shadow hover:scale-105 transition-transform">
+        登录系统
+      </button>
+    </div>
+  </nav>
+
+  <!-- 主视觉区域 (核心都市插画层) -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+    <!-- 粒子背景层 -->
+    <canvas id="particles" class="absolute inset-0 z-10 pointer-events-none"></canvas>
+    
+    <!-- 城市剪影层 -->
+    <div class="absolute bottom-0 left-0 w-full h-[400px] z-20 opacity-80">
+      <svg viewBox="0 0 1440 500" preserveAspectRatio="none" class="w-full h-full">
+        <path d="M0,320L48,288C96,256,192,192,288,181.3C384,171,480,213,576,229.3C672,245,768,235,864,213.3C960,192,1056,160,1152,160C1248,160,1344,192,1392,208L1440,224L1440,500L1392,500C1344,500,1248,500,1152,500C1056,500,960,500,864,500C768,500,672,500,576,500C480,500,384,500,288,500C192,500,96,500,48,500L0,500Z" fill="url(#city-gradient)"></path>
+        <defs>
+          <linearGradient id="city-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1a1a4a"></stop>
+            <stop offset="100%" stop-color="#0a0a1a"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- 内容层 -->
+    <div class="relative z-30 text-center max-w-5xl mt-20">
+      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-gradient">
+        都市霓虹 <br> 未来视界
+      </h1>
+      <p class="text-[clamp(1rem,3vw,1.5rem)] text-gray-300 mb-10 max-w-2xl mx-auto">
+        融合现代科技与都市美学，打造层次丰富的沉浸式视觉体验
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="px-8 py-3 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple neon-shadow text-lg font-semibold hover:scale-105 transition-transform">
+          进入项目 <i class="fa-solid fa-arrow-right ml-2"></i>
+        </button>
+        <button class="px-8 py-3 rounded-full border border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10 transition-colors text-lg font-semibold">
+          查看源码
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内容区域 -->
+  <section id="features" class="relative py-20 px-6 z-40">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">核心特性</h2>
+        <p class="text-gray-400 max-w-xl mx-auto">现代化设计架构，支持前后端无缝对接，极致视觉体验</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 卡片1 -->
+        <div class="bg-darkBlue/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-neon-blue/50 transition-all hover:-translate-y-2 group">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple flex items-center justify-center mb-6">
+            <i class="fa-solid fa-palette text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">都市插画风格</h3>
+          <p class="text-gray-400">高级深色系配色，霓虹光效点缀，层次分明的视觉设计</p>
+        </div>
+
+        <!-- 卡片2 -->
+        <div class="bg-darkBlue/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-neon-purple/50 transition-all hover:-translate-y-2 group">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center mb-6">
+            <i class="fa-solid fa-code text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">前后端适配</h3>
+          <p class="text-gray-400">标准化代码结构，可直接对接你的后端接口与业务逻辑</p>
+        </div>
+
+        <!-- 卡片3 -->
+        <div class="bg-darkBlue/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-neon-green/50 transition-all hover:-translate-y-2 group">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-r from-neon-green to-neon-blue flex items-center justify-center mb-6">
+            <i class="fa-solid fa-magic text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">动态交互</h3>
+          <p class="text-gray-400">鼠标光影、粒子特效、平滑滚动，全场景动态效果</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer id="contact" class="relative py-12 px-6 border-t border-white/10 z-40">
+    <div class="max-w-7xl mx-auto text-center">
+      <h3 class="text-2xl font-bold text-gradient mb-6">URBAN NEON</h3>
+      <div class="flex justify-center gap-6 mb-6">
+        <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 hover:border-neon-blue hover:text-neon-blue transition-colors">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 hover:border-neon-purple hover:text-neon-purple transition-colors">
+          <i class="fa-brands fa-codepen"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center border border-white/20 hover:border-neon-green hover:text-neon-green transition-colors">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+      <p class="text-gray-500">© 2026 Urban Neon. 高端都市视觉设计</p>
+    </div>
+  </footer>
+
+  <!-- JS 动态效果 -->
+  <script>
+    // 1. 鼠标光影效果
+    const mouseLight = document.getElementById('mouseLight');
+    document.addEventListener('mousemove', (e) => {
+      mouseLight.style.setProperty('--x', e.clientX + 'px');
+      mouseLight.style.setProperty('--y', e.clientY + 'px');
+    });
+
+    // 2. 粒子背景动画
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    // 粒子数组
+    const particlesArray = [];
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = Math.random() > 0.5 ? '#00f0ff' : '#9d00ff';
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > width) this.speedX *= -1;
+        if (this.y < 0 || this.y > height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // 创建粒子
+    function init() {
+      particlesArray.length = 0;
+      for (let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    // 动画循环
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particlesArray.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    // 窗口 resize
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      init();
+    });
+
+    // 3. 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
