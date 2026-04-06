@@ -55,7 +55,7 @@
   <!-- 导航栏 -->
   <nav class="fixed w-full top-0 z-50 px-6 md:px-12 py-4 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="#home" class="text-2xl font-bold text-gradient">导航<span class="text-neon-blue">页</span></a>
+      <a href="#home" class="text-2xl font-bold text-gradient">个人<span class="text-neon-blue">展示页</span></a>
       <div class="hidden md:flex gap-8">
         <a href="#home" class="hover:text-neon-blue transition-colors">首页</a>
         <a href="#features" class="hover:text-neon-blue transition-colors">特色</a>
@@ -85,10 +85,8 @@
     </div>
 
     <div class="relative z-30 text-center max-w-5xl mt-20">
-      <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold leading-tight mb-6 text-gradient font-['Noto_Sans_SC']">
-        淮河游客的主页
-      </h1>
-      <p class="text-[clamp(1rem,4vw,3rem)] font-bold leading-tight mb-6 text-gradient font-['Brush_Script_MT']">
+      
+      <p class="text-[clamp(1rem,6vw,5rem)] font-bold leading-tight mb-6 text-gradient font-['Brush_Script_MT']">
         Huaiheyouke's Page
       </p>
 
@@ -99,9 +97,7 @@
         <button onclick="toProject()" class="px-8 py-3 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple neon-shadow text-lg font-semibold hover:scale-105 transition-transform">
           淮河游客的Github <i class="fa-solid fa-arrow-right ml-2"></i>
         </button>
-        <button onclick="toSource()" class="px-8 py-3 rounded-full border border-neon-blue/50 text-neon-blue hover:bg-neon-blue/10 transition-colors text-lg font-semibold">
-          查看源码
-        </button>
+        
       </div>
     </div>
   </section>
@@ -110,8 +106,8 @@
   <section id="features" class="relative py-20 px-6 z-40">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">核心特性</h2>
-        <p class="text-gray-400 max-w-xl mx-auto">现代化设计架构，支持前后端无缝对接，极致视觉体验</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">优势领域分布</h2>
+        <p class="text-gray-400 max-w-xl mx-auto">全栈能力，从底层硬件、算法、信号、软件、物联网再到人工智能</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -119,7 +115,7 @@
           <div class="w-16 h-16 rounded-full bg-gradient-to-r from-neon-blue to-neon-purple flex items-center justify-center mb-6">
             <i class="fa-solid fa-palette text-2xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3">都市插画风格</h3>
+          <h3 class="text-2xl font-bold mb-3">通信为主</h3>
           <p class="text-gray-400">高级深色系配色，霓虹光效点缀，层次分明的视觉设计</p>
         </div>
 
@@ -127,7 +123,7 @@
           <div class="w-16 h-16 rounded-full bg-gradient-to-r from-neon-purple to-neon-pink flex items-center justify-center mb-6">
             <i class="fa-solid fa-code text-2xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3">前后端适配</h3>
+          <h3 class="text-2xl font-bold mb-3">软件开发</h3>
           <p class="text-gray-400">标准化代码结构，可直接对接你的后端接口与业务逻辑</p>
         </div>
 
@@ -135,7 +131,7 @@
           <div class="w-16 h-16 rounded-full bg-gradient-to-r from-neon-green to-neon-blue flex items-center justify-center mb-6">
             <i class="fa-solid fa-magic text-2xl"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-3">动态交互</h3>
+          <h3 class="text-2xl font-bold mb-3">算法与人工智能</h3>
           <p class="text-gray-400">鼠标光影、粒子特效、平滑滚动，全场景动态效果</p>
         </div>
       </div>
@@ -145,8 +141,8 @@
   <!-- 项目区域 -->
   <section id="projects" class="relative py-20 px-6 z-40 bg-darkBlue/20">
     <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">项目展示</h2>
-      <p class="text-gray-400 mb-12">基于该框架开发的高端视觉项目</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gradient">项目</h2>
+      <p class="text-gray-400 mb-12">全体列表一览</p>
       <button onclick="showProjects()" class="px-8 py-3 rounded-full border border-neon-purple/50 text-neon-purple hover:bg-neon-purple/10 transition-colors text-lg">查看全部项目</button>
     </div>
   </section>
@@ -251,10 +247,6 @@
       window.open("https://github.com/huaiheyouke","_blank");
     }
 
-    // 查看GitHub源码
-    function toSource() {
-      window.open("https://github.com/huaiheyouke/Programs","_blank");
-    }
 
     // 查看全部项目
     function showProjects() {
